@@ -1,0 +1,265 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>系统编程 | 遇24站</title><meta name="author" content="Jaychenyi"><meta name="copyright" content="Jaychenyi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="系统编程就是liunx下的高级编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统编程">
+<meta property="og:url" content="http://example.com/2022/12/07/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/index.html">
+<meta property="og:site_name" content="遇24站">
+<meta property="og:description" content="系统编程就是liunx下的高级编程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://hd.wallpaperswide.com/thumbs/bike_chase-t2.jpg">
+<meta property="article:published_time" content="2022-12-07T11:36:36.000Z">
+<meta property="article:modified_time" content="2022-12-06T16:00:00.000Z">
+<meta property="article:author" content="Jaychenyi">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://hd.wallpaperswide.com/thumbs/bike_chase-t2.jpg"><link rel="shortcut icon" href="https://picgo-md-1314462720.cos.ap-beijing.myqcloud.com/20221125202727.png"><link rel="canonical" href="http://example.com/2022/12/07/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '系统编程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-07 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221203223045367.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-share-nodes"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 图库</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/notes/"><i class="fa-fw fa fa-pencil-square-o"></i><span> 随笔</span></a></li><li><a class="site-page child" href="/words/"><i class="fa-fw fa fa-pencil-square-o"></i><span> 语录</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-hippo"></i><span> 小黑屋</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/zhan/"><i class="fa-fw fas fa-earth-americas"></i><span> 任意门</span></a></li><li><a class="site-page child" href="/intellectual/"><i class="fa-fw fas fa-face-zany"></i><span> 游戏厅</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 朋友站</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言站</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于站者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('http://hd.wallpaperswide.com/thumbs/bike_chase-t2.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">遇24站</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-share-nodes"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 图库</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/notes/"><i class="fa-fw fa fa-pencil-square-o"></i><span> 随笔</span></a></li><li><a class="site-page child" href="/words/"><i class="fa-fw fa fa-pencil-square-o"></i><span> 语录</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-hippo"></i><span> 小黑屋</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/zhan/"><i class="fa-fw fas fa-earth-americas"></i><span> 任意门</span></a></li><li><a class="site-page child" href="/intellectual/"><i class="fa-fw fas fa-face-zany"></i><span> 游戏厅</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 朋友站</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言站</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于站者</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">系统编程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-07T11:36:36.000Z" title="发表于 2022-12-07 19:36:36">2022-12-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-06T16:00:00.000Z" title="更新于 2022-12-07 00:00:00">2022-12-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/linux/">linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="系统编程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="系统编程-C语言"><a href="#系统编程-C语言" class="headerlink" title="系统编程 C语言"></a>系统编程 C语言</h2><p>什么是liunx系统编程？</p>
+<p>​	系统编程就是liunx下的高级编程</p>
+<p>解释：<strong>应用层 - 驱动层</strong> - 硬件层</p>
+<p>​	系统编程是介于应用层和驱动层之间的，内核向用户提供接口</p>
+<p>基础知识：C语言、linux的基础操作</p>
+<p>学习方法：框架学习法</p>
+<h2 id="第一个C程序"><a href="#第一个C程序" class="headerlink" title="第一个C程序"></a>第一个C程序</h2><p>基本的程序框架</p>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207144114803.png" alt="image-20221207144114803"></p>
+<blockquote>
+<p>注: 这里的main函数是没有带参数的void型，但是在linux编程下都是带参数的，因为要通过命令行进行传参，所有这里的void要改为 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;int argc,char *argv[]</span><br></pre></td></tr></table></figure>
+
+<p><strong>argc :表示的是命令行中的参数的个数</strong></p>
+<p><strong>argv: 表示的是命令中的参数</strong> </p>
+</blockquote>
+<p><strong>对于argc</strong></p>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207144640455.png" alt="image-20221207144640455"></p>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207145204981.png" alt="image-20221207145204981"></p>
+<p><strong>对于argv</strong></p>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207145352061.png" alt="image-20221207145352061"></p>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207145407043.png" alt="image-20221207145407043"></p>
+<blockquote>
+<p>argv 能打印多少呢？</p>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207145824636.png" alt="image-20221207145824636"></p>
+</blockquote>
+<h2 id="文件I-x2F-O和标准I-x2F-O"><a href="#文件I-x2F-O和标准I-x2F-O" class="headerlink" title="文件I&#x2F;O和标准I&#x2F;O"></a>文件I&#x2F;O和标准I&#x2F;O</h2><p>文件I&#x2F;O 就是<strong>直接调用</strong>的内核提供的系统调用函数</p>
+<p>依赖于文件</p>
+<p>标准I&#x2F;O就是<strong>间接调用</strong>系统函数、C库函数</p>
+<p>依赖于流</p>
+<blockquote>
+<p>文件lO是直接调用内核提供的系统调用函数，头文件是unistd.h，标准IO是间接调用系统调用函数，头文件是stdio.h，<strong>文件lO是依赖于Linux操作系统的，</strong>标准IO是不依赖操作系统的，所以在<strong>任何的操作系统下使用标准IO，也就是C库函数操作文件的方法都是相同的</strong>。</p>
+</blockquote>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207150832209.png" alt="image-20221207150832209"></p>
+<h4 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h4><p>对于文件lO来说，一切都是围绕文件描述符来进行的。在Linux系统中，所有打开的文件都有一个对应的文件描述符。</p>
+<p>文件描述符的本质是一个非负整数，当我们打开一个文件时，系统会给我们分配一个文件描述符。文件描述符的本质是一个非负整数，当我们打开一个文件时，系统会给我们分配一个文件描述符.</p>
+<p>当我们对一个文件做读写操作的时候，我们使用open函数返回的这个文件描述符会标识该文件，并将其作为参数传递给read或者write函数</p>
+<p>Linux进程会默认打开三个文件描述符</p>
+<ul>
+<li><p>0 - stdin 标准输入</p>
+</li>
+<li><p>1 -stdout 标准输出</p>
+</li>
+<li><p>2 -stderror 标准错误</p>
+</li>
+</ul>
+<h4 id="open函数"><a href="#open函数" class="headerlink" title="open函数"></a>open函数</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207151529658.png" alt="image-20221207151529658"></p>
+<p>描述：open( 文件名，标志)</p>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207151441306.png" alt="image-20221207151441306"></p>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207162627735.png" alt="image-20221207162627735"></p>
+<p>O_RDWR可读可写</p>
+<p>O_WRONLY 可写</p>
+<p>O_RDONLY 可读</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O_RDWR | O_WRONLY | O_RDONLY</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207151727654.png" alt="image-20221207151727654"></p>
+<p>文件权限：mode</p>
+<blockquote>
+<p>可执行-&gt;1</p>
+<p>可写-&gt; 2</p>
+<p>可读-&gt;4</p>
+</blockquote>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207152624062.png" alt="image-20221207152624062"></p>
+<blockquote>
+<p>fd is 3</p>
+</blockquote>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207152825095.png" alt="image-20221207152825095"></p>
+<blockquote>
+<p>fd is -1</p>
+</blockquote>
+<blockquote>
+<p>rw- 6</p>
+<p>r  - -4</p>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207153020230.png" alt="image-20221207153020230"></p>
+<p>计算公式：</p>
+<p>​	<strong>mode - t &amp; ~(umask)</strong></p>
+<p>​	  <strong>6 6 6 &amp; 7 5 5  &#x3D; 644 -&gt; rw-r–r–		022  取反 755</strong></p>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207153531129.png" alt="image-20221207153531129"></p>
+</blockquote>
+<h4 id="close函数"><a href="#close函数" class="headerlink" title="close函数"></a>close函数</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">close</span><span class="params">(<span class="type">int</span> fd)</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>主要查看 man手册</p>
+</blockquote>
+<p>为什么要关闭文件描述符？</p>
+<p>原因：</p>
+<p>​	因为文件描述符的数量是有限的，内核规定为1024个，如果大于1024个文件描述符就不够用了，当我们关闭先前的文件描述符，内核就不在重用了，当内核下次再调用它的时候，又能重用了。</p>
+<h4 id="read函数"><a href="#read函数" class="headerlink" title="read函数"></a>read函数</h4><p>man 2 read</p>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207161700250.png" alt="image-20221207161700250"></p>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207161712317.png" alt="image-20221207161712317"></p>
+<h4 id="write函数"><a href="#write函数" class="headerlink" title="write函数"></a>write函数</h4><blockquote>
+<p>ssize_t write(int fd, const void *buf, size_t count);</p>
+<p>int m &#x3D; write( fd,buf,size)</p>
+</blockquote>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207162458978.png" alt="image-20221207162458978"></p>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207162514452.png" alt="image-20221207162514452"></p>
+<p><strong>写入</strong></p>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207163057070.png" alt="image-20221207163057070"></p>
+<h4 id="综合练习"><a href="#综合练习" class="headerlink" title="综合练习"></a>综合练习</h4><p>将一个文件里面的内容写入到另一个文件里面实现了文件的拷贝</p>
+<p><strong>等同于命令中cp命令</strong></p>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207181522242.png" alt="image-20221207181522242"></p>
+<h4 id="lseek函数"><a href="#lseek函数" class="headerlink" title="lseek函数"></a>lseek函数</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">off_t lseek(int fd, off_t offset, int whence);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207204552935.png" alt="image-20221207204552935"></p>
+<p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207210924677.png" alt="image-20221207210924677"></p>
+<h2 id="目录IO"><a href="#目录IO" class="headerlink" title="目录IO"></a>目录IO</h2><ol>
+<li>opendir 打开目录</li>
+<li>mkdir 创建目录</li>
+<li>readdir 读目录</li>
+<li>closedir 关闭</li>
+</ol>
+<h4 id="mkidr函数"><a href="#mkidr函数" class="headerlink" title="mkidr函数"></a>mkidr函数</h4><p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207212842375.png" alt="image-20221207212842375"></p>
+<h4 id="opendir函数"><a href="#opendir函数" class="headerlink" title="opendir函数"></a>opendir函数</h4><p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207215254308.png" alt="image-20221207215254308"></p>
+<h4 id="readdir函数"><a href="#readdir函数" class="headerlink" title="readdir函数"></a>readdir函数</h4><p><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221207221226759.png" alt="image-20221207221226759"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Jaychenyi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/12/07/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/">http://example.com/2022/12/07/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">遇24站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/linux/">linux</a></div><div class="post_share"><div class="social-share" data-image="http://hd.wallpaperswide.com/thumbs/bike_chase-t2.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/12/04/nginx/"><img class="next-cover" src="http://hd.wallpaperswide.com/thumbs/cubeboy-t2.jpg" onerror="onerror=null;src='https://s1.wallpapermaiden.com/image/2022/11/12/retro-cars-muscle-cars-side-view-vehicles-52612-resized.jpeg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">nginx</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/11/30/Linux%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E/" title="Linux版本说明"><img class="cover" src="http://hd.wallpaperswide.com/thumbs/bike_chase-t2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-30</div><div class="title">Linux版本说明</div></div></a></div><div><a href="/2022/11/16/Vi%E5%92%8CVim%E7%BC%96%E8%BE%91%E5%99%A8/" title="Vi和Vim编辑器"><img class="cover" src="http://hd.wallpaperswide.com/thumbs/cubeboy-t2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-16</div><div class="title">Vi和Vim编辑器</div></div></a></div><div><a href="/2022/11/17/shell%E7%BC%96%E7%A8%8B/" title="shell编程"><img class="cover" src="http://hd.wallpaperswide.com/thumbs/cubeboy-t2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-17</div><div class="title">shell编程</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://chenyi-tuku.oss-cn-beijing.aliyuncs.com/Project-C2/image-20221203223045367.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Jaychenyi</div><div class="author-info__description">炽热的青春从不后退，我们勇往直前</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Ronronner859"><i class="fab fa-github"></i><span>快来这</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Ronronner859" target="_blank" title="来我的Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2863519726@qq.com" target="_blank" title="给我发邮件"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://blog.csdn.net/qq_51714990?type=blog" target="_blank" title="浏览我的博客吧"><i class="fab fa-teamspeak"></i></a><a class="social-icon" href="https://www.jaychenyi.top" target="_blank" title="遇24栈"><i class="fas fa-heart"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">今天是大晴天！ -show time!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B-C%E8%AF%AD%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">系统编程 C语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AAC%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">第一个C程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6I-x2F-O%E5%92%8C%E6%A0%87%E5%87%86I-x2F-O"><span class="toc-number">3.</span> <span class="toc-text">文件I&#x2F;O和标准I&#x2F;O</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="toc-number">3.0.1.</span> <span class="toc-text">文件描述符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#open%E5%87%BD%E6%95%B0"><span class="toc-number">3.0.2.</span> <span class="toc-text">open函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#close%E5%87%BD%E6%95%B0"><span class="toc-number">3.0.3.</span> <span class="toc-text">close函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#read%E5%87%BD%E6%95%B0"><span class="toc-number">3.0.4.</span> <span class="toc-text">read函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#write%E5%87%BD%E6%95%B0"><span class="toc-number">3.0.5.</span> <span class="toc-text">write函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E7%BB%83%E4%B9%A0"><span class="toc-number">3.0.6.</span> <span class="toc-text">综合练习</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lseek%E5%87%BD%E6%95%B0"><span class="toc-number">3.0.7.</span> <span class="toc-text">lseek函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95IO"><span class="toc-number">4.</span> <span class="toc-text">目录IO</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mkidr%E5%87%BD%E6%95%B0"><span class="toc-number">4.0.1.</span> <span class="toc-text">mkidr函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#opendir%E5%87%BD%E6%95%B0"><span class="toc-number">4.0.2.</span> <span class="toc-text">opendir函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#readdir%E5%87%BD%E6%95%B0"><span class="toc-number">4.0.3.</span> <span class="toc-text">readdir函数</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/07/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/" title="系统编程"><img src="http://hd.wallpaperswide.com/thumbs/bike_chase-t2.jpg" onerror="this.onerror=null;this.src='https://s1.wallpapermaiden.com/image/2022/11/12/retro-cars-muscle-cars-side-view-vehicles-52612-resized.jpeg'" alt="系统编程"/></a><div class="content"><a class="title" href="/2022/12/07/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/" title="系统编程">系统编程</a><time datetime="2022-12-07T11:36:36.000Z" title="发表于 2022-12-07 19:36:36">2022-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/04/nginx/" title="nginx"><img src="http://hd.wallpaperswide.com/thumbs/cubeboy-t2.jpg" onerror="this.onerror=null;this.src='https://s1.wallpapermaiden.com/image/2022/11/12/retro-cars-muscle-cars-side-view-vehicles-52612-resized.jpeg'" alt="nginx"/></a><div class="content"><a class="title" href="/2022/12/04/nginx/" title="nginx">nginx</a><time datetime="2022-12-04T11:36:36.000Z" title="发表于 2022-12-04 19:36:36">2022-12-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/04/%E5%90%8E%E6%9C%9F%E7%AC%94%E8%AE%B0/" title="后期笔记"><img src="http://hd.wallpaperswide.com/thumbs/cubeboy-t2.jpg" onerror="this.onerror=null;this.src='https://s1.wallpapermaiden.com/image/2022/11/12/retro-cars-muscle-cars-side-view-vehicles-52612-resized.jpeg'" alt="后期笔记"/></a><div class="content"><a class="title" href="/2022/12/04/%E5%90%8E%E6%9C%9F%E7%AC%94%E8%AE%B0/" title="后期笔记">后期笔记</a><time datetime="2022-12-04T11:36:36.000Z" title="发表于 2022-12-04 19:36:36">2022-12-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/03/Nginx+Tomcat/" title="Nginx+Tomcat"><img src="http://hd.wallpaperswide.com/thumbs/cubeboy-t2.jpg" onerror="this.onerror=null;this.src='https://s1.wallpapermaiden.com/image/2022/11/12/retro-cars-muscle-cars-side-view-vehicles-52612-resized.jpeg'" alt="Nginx+Tomcat"/></a><div class="content"><a class="title" href="/2022/12/03/Nginx+Tomcat/" title="Nginx+Tomcat">Nginx+Tomcat</a><time datetime="2022-12-03T11:36:36.000Z" title="发表于 2022-12-03 19:36:36">2022-12-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/02/%E4%BB%8A%E6%97%A5%E5%88%86%E4%BA%AB/" title="今日分享"><img src="http://hd.wallpaperswide.com/thumbs/cubeboy-t2.jpg" onerror="this.onerror=null;this.src='https://s1.wallpapermaiden.com/image/2022/11/12/retro-cars-muscle-cars-side-view-vehicles-52612-resized.jpeg'" alt="今日分享"/></a><div class="content"><a class="title" href="/2022/12/02/%E4%BB%8A%E6%97%A5%E5%88%86%E4%BA%AB/" title="今日分享">今日分享</a><time datetime="2022-12-02T11:36:36.000Z" title="发表于 2022-12-02 19:36:36">2022-12-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Jaychenyi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_51714990?type=blog">blog</a>! 祝你今天心情愉快！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+<script type="text/javascript" src="/js/fireworks.js"></script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"live2d-widget-model-haruto"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html><!--浏览器搞笑标题-->
+<script type="text/javascript" src="/js/FunnyTitle.js"></script>
+<!--动态线条背景-->
+<script type="text/javascript" color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"> </script>
