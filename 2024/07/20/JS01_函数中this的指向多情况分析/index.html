@@ -9,7 +9,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable" content="代码从未如此简单">
+    <meta name="apple-mobile-web-app-capable" content="从未如此简单有趣">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no,email=no,adress=no">
     <meta name="browsermode" content="application">
@@ -36,10 +36,10 @@ JS中只要定义了一个方法，那么该方法就会有this指向，然而�
     
     JS_函数中this的指向多情况分析 |
     
-    代码从未如此简单
+    从未如此简单有趣
 </title>
 
-<link rel="alternate" href="/atom.xml" title="代码从未如此简单" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="从未如此简单有趣" type="application/atom+xml">
 
 
 <link rel="icon" href="/favicon.ico">
@@ -75,7 +75,7 @@ JS中只要定义了一个方法，那么该方法就会有this指向，然而�
 <![endif]-->
 <body>
     <header class="main-header"  style="background-image:url(
-    https://hexo-theme-snippet-1251680922.cos.ap-beijing.myqcloud.com/img/banner.jpg)"
+    https://pic.netbian.com/uploads/allimg/240716/175037-17211234379392.jpg)"
      >
     <div class="main-header-box">
         <a class="header-avatar" href="/" title='er dong yi'>
@@ -84,7 +84,9 @@ JS中只要定义了一个方法，那么该方法就会有this指向，然而�
         <div class="branding">
             <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
             
-            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            <h2>
+                前端从未如此简单有趣
+            </h2>
             
         </div>
     </div>
@@ -98,13 +100,13 @@ JS中只要定义了一个方法，那么该方法就会有this指向，然而�
                         <i class="fa fa-bars"></i>
                     </span>
                     <a class="navbar-brand" href="http://example.com">
-                        代码从未如此简单</a>
+                        从未如此简单有趣</a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-menu">
                     <ul class="menu">
                         
                         <li role="presentation" class="text-center">
-                            <a href="/"><i class="fa "></i>
+                            <a href="/"><i class="fa fa-home"></i>
                                 Home</a>
                         </li>
                         
@@ -167,6 +169,11 @@ JS中只要定义了一个方法，那么该方法就会有this指向，然而�
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
             2024/07/20</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
     </span>
     
     
@@ -304,6 +311,16 @@ JS中只要定义了一个方法，那么该方法就会有this指向，然而�
             <div class="col-sm-12">
                 <div class="busuanzi">
     
+    Total:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    Visitors:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
 </div>
             </div>
             <div class="col-sm-12">
@@ -323,6 +340,32 @@ JS中只要定义了一个方法，那么该方法就会有this指向，然而�
 </div>
 
 
+
+<script src="/assets/tagcanvas.min.js?rev=2.9.js"></script>
+
+<script>
+var tagOption = {
+    textColour: '#444', // 字体颜色
+    outlineMethod: 'block', // 选中模式
+    outlineColour: '#FFDAB9', // 选中模式的颜色
+    interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+    textHeight: 13,
+    outlineRadius: 3,
+    freezeActive: true || '', // 选中的标签是否继续滚动
+    frontSelect: true || '', // 不选标签云后部的标签
+    initial: [0.1, -0.1],
+    depth: 0.5,
+    decel: 0.95,
+    maxSpeed: 0.03,
+    reverse: true || '', // 是否反向触发
+    fadeIn: 500, // 进入动画时间
+    wheelZoom: false || '' // 是否启用鼠标滚轮
+}
+TagCanvas.Start('tag-cloud-3d', '', tagOption);
+</script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 <script src="/js/app.js?rev=@@hash.js"></script>
