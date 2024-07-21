@@ -1,0 +1,383 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="大白话说前端，多读源码多实践，勤于思考善领悟">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://example.com">
+    <!--SEO-->
+
+<meta name="keywords" content="" />
+
+
+<meta name="description" content="TypeSript【官网】【READBOOK】https://www.bookstack.cn/read/wangdoc-typescript-tutorial/docs-d.ts.md
+
+ts..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    一文知TypeScript的核心 |
+    
+    大白话说前端，多读源码多实践，勤于思考善领悟
+</title>
+
+<link rel="alternate" href="/atom.xml" title="大白话说前端，多读源码多实践，勤于思考善领悟" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    https://pic.netbian.com/uploads/allimg/240716/175037-17211234379392.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='er dong yi'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <h2>
+                前端从未如此简单有趣
+            </h2>
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://example.com">
+                        大白话说前端，多读源码多实践，勤于思考善领悟</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                Home</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa fa-calendar"></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="一文知TypeScript的核心">
+            
+            一文知TypeScript的核心
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/TypeScript/">TypeScript</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2024/03/20</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="TypeSript【官网】"><a href="#TypeSript【官网】" class="headerlink" title="TypeSript【官网】"></a>TypeSript【<a target="_blank" rel="noopener" href="https://www.typescriptlang.org/">官网</a>】</h1><p>【READBOOK】<a target="_blank" rel="noopener" href="https://www.bookstack.cn/read/wangdoc-typescript-tutorial/docs-d.ts.md">https://www.bookstack.cn/read/wangdoc-typescript-tutorial/docs-d.ts.md</a></p>
+<blockquote>
+<p>ts是js的一个超集，解决js类型支持<br>js: 动态类型<br>ts:静态类型 代码执行的顺序是先编译在执行 发现错误更早</p>
+</blockquote>
+<h2 id="1-为什么要添加类型支持？"><a href="#1-为什么要添加类型支持？" class="headerlink" title="1.为什么要添加类型支持？"></a>1.为什么要添加类型支持？</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721120523287.png" alt="image-20240721120523287"></p>
+<h2 id="2-优势有什么？"><a href="#2-优势有什么？" class="headerlink" title="2.优势有什么？"></a>2.优势有什么？</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721120537617.png" alt="image-20240721120537617"></p>
+<h2 id="3-全局安装"><a href="#3-全局安装" class="headerlink" title="3.全局安装"></a>3.全局安装</h2><p>npm i -g typescript<br>tsc -v<br><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721120743399.png" alt="image-20240721120743399"></p>
+<h2 id="4-简化运行ts的步骤"><a href="#4-简化运行ts的步骤" class="headerlink" title="4.简化运行ts的步骤"></a>4.简化运行ts的步骤</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721120750227.png" alt="image-20240721120750227"></p>
+<h2 id="5-typescript常用类型"><a href="#5-typescript常用类型" class="headerlink" title="5.typescript常用类型"></a>5.typescript常用类型</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721120830252.png" alt="image-20240721120830252"><br>    类型检查机制<br><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721120838004.png" alt="image-20240721120838004"></p>
+<h3 id="5-1-类型注解"><a href="#5-1-类型注解" class="headerlink" title="5.1 类型注解"></a>5.1 类型注解</h3><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721120849885.png" alt="image-20240721120849885"></p>
+<h3 id="5-2-常用基础类型"><a href="#5-2-常用基础类型" class="headerlink" title="5.2 常用基础类型"></a>5.2 常用基础类型</h3><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721120912074.png" alt="image-20240721120912074"></p>
+<h3 id="5-3-原始类型"><a href="#5-3-原始类型" class="headerlink" title="5.3 原始类型"></a>5.3 原始类型</h3><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721120918575.png" alt="image-20240721120918575"></p>
+<h2 id="6-数组类型"><a href="#6-数组类型" class="headerlink" title="6.数组类型"></a>6.数组类型</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721120928792.png" alt="image-20240721120928792"></p>
+<h2 id="7-类型别名-type关键字"><a href="#7-类型别名-type关键字" class="headerlink" title="7.类型别名 type关键字"></a>7.类型别名 type关键字</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721120940043.png" alt="image-20240721120940043"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类型别名</span></span><br><span class="line">type <span class="title class_">CustomArray</span> = (number|string)[]</span><br><span class="line"><span class="keyword">let</span> <span class="attr">arr1</span>:<span class="title class_">CustomArray</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="string">&#x27;a&#x27;</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> <span class="attr">arr2</span>:<span class="title class_">CustomArray</span> = [<span class="number">1</span>,<span class="number">4</span>,<span class="string">&#x27;a&#x27;</span>,<span class="number">3</span>]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr1);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr2);</span><br></pre></td></tr></table></figure>
+<h2 id="8-函数类型"><a href="#8-函数类型" class="headerlink" title="8.函数类型"></a>8.函数类型</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121001207.png" alt="image-20240721121001207"><br><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121015535.png" alt="image-20240721121015535"> <img src="https://cdn.nlark.com/yuque/0/2024/png/33763848/1710646192514-1f47469a-ab81-4011-9cf4-fe4ded6496ba.png#averageHue=%23bebebd&clientId=ubd60721e-5bad-4&from=paste&height=358&id=ub48e99c6&originHeight=430&originWidth=1188&originalType=binary&ratio=1.2000000476837158&rotation=0&showTitle=false&size=185502&status=done&style=none&taskId=u9615898a-d1c0-4e3d-a657-bbb113790d6&title=&width=989.999960660936" alt="image.png"></p>
+<h2 id="9-可选参数"><a href="#9-可选参数" class="headerlink" title="9.可选参数"></a>9.可选参数</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/mymyimage-20240721121025698.png"></p>
+<h2 id="10-对象类型"><a href="#10-对象类型" class="headerlink" title="10.对象类型"></a>10.对象类型</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121049309.png" alt="image-20240721121049309"><br>对象的类型其实就是在描述对象的结构</p>
+<h2 id="11-对象中的可选属性"><a href="#11-对象中的可选属性" class="headerlink" title="11.对象中的可选属性"></a>11.对象中的可选属性</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121102273.png" alt="image-20240721121102273"></p>
+<h2 id="12-接口【复用】"><a href="#12-接口【复用】" class="headerlink" title="12.接口【复用】"></a>12.接口【复用】</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121115763.png" alt="image-20240721121115763"></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//   接口</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">IPerson</span>&#123;</span><br><span class="line">  <span class="attr">name</span>:<span class="built_in">string</span></span><br><span class="line">  <span class="attr">age</span>:<span class="built_in">number</span></span><br><span class="line">  <span class="title function_">sayhi</span>():<span class="built_in">void</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">person_3</span>:<span class="title class_">IPerson</span> =&#123;</span><br><span class="line">  <span class="attr">name</span>:<span class="string">&#x27;JACL&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>:<span class="number">11</span>,</span><br><span class="line">  <span class="title function_">sayhi</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">person_4</span>:<span class="title class_">IPerson</span> =&#123;</span><br><span class="line">  <span class="attr">name</span>:<span class="string">&#x27;JAC33L&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>:<span class="number">33</span>,</span><br><span class="line">  <span class="title function_">sayhi</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person_3);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person_4);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="13-接口和类型别名"><a href="#13-接口和类型别名" class="headerlink" title="13.接口和类型别名"></a>13.接口和类型别名</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121126704.png" alt="image-20240721121126704"></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> num = <span class="built_in">number</span> | <span class="built_in">string</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">a</span>:num = <span class="number">1</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">b</span>:num = <span class="string">&#x27;asf&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b);</span><br></pre></td></tr></table></figure>
+<h2 id="14-接口继承复用"><a href="#14-接口继承复用" class="headerlink" title="14.接口继承复用"></a>14.接口继承复用</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121135431.png" alt="image-20240721121135431"></p>
+<h2 id="15-元组"><a href="#15-元组" class="headerlink" title="15.元组"></a>15.元组</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121142483.png" alt="image-20240721121142483"></p>
+<h2 id="16-类型推论"><a href="#16-类型推论" class="headerlink" title="16.类型推论"></a>16.类型推论</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121150350.png" alt="image-20240721121150350"></p>
+<h2 id="17-类型断言"><a href="#17-类型断言" class="headerlink" title="17.类型断言"></a>17.类型断言</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121208236.png" alt="image-20240721121208236"><br><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121217184.png" alt="image-20240721121217184"></p>
+<h2 id="18-字面量类型"><a href="#18-字面量类型" class="headerlink" title="18.字面量类型"></a>18.字面量类型</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121236561.png" alt="image-20240721121236561"></p>
+<p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121252766.png" alt="image-20240721121252766"></p>
+<h2 id="19-枚举类型"><a href="#19-枚举类型" class="headerlink" title="19.枚举类型"></a>19.枚举类型</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121309266.png" alt="image-20240721121309266"><br><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121340668.png" alt="image-20240721121340668"><br><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121347906.png" alt="image-20240721121347906"></p>
+<h2 id="20-字符串枚举"><a href="#20-字符串枚举" class="headerlink" title="20.字符串枚举"></a>20.字符串枚举</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121359120.png" alt="image-20240721121359120"></p>
+<h2 id="21-枚举特点"><a href="#21-枚举特点" class="headerlink" title="21.枚举特点"></a>21.枚举特点</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121408775.png" alt="image-20240721121408775"></p>
+<h2 id="22-any类型"><a href="#22-any类型" class="headerlink" title="22.any类型"></a>22.any类型</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121416386.png" alt="image-20240721121416386"></p>
+<h2 id="23-ypeof"><a href="#23-ypeof" class="headerlink" title="23.ypeof"></a>23.ypeof</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121424894.png" alt="image-20240721121424894"></p>
+<h2 id="24-TS高级类型"><a href="#24-TS高级类型" class="headerlink" title="24.TS高级类型"></a>24.TS高级类型</h2><h3 id="24-1-class"><a href="#24-1-class" class="headerlink" title="24.1 class"></a>24.1 class</h3><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121441081.png" alt="image-20240721121441081"><br><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121452792.png" alt="image-20240721121452792"></p>
+<h2 id="25-类的实例方法"><a href="#25-类的实例方法" class="headerlink" title="25.类的实例方法"></a>25.类的实例方法</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121504102.png" alt="image-20240721121504102"></p>
+<h2 id="26-类的继承"><a href="#26-类的继承" class="headerlink" title="26.类的继承"></a>26.类的继承</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121517304.png" alt="image-20240721121517304"></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121524791.png" alt="image-20240721121524791"></h2><h2 id="27-类成员可见性"><a href="#27-类成员可见性" class="headerlink" title="27.类成员可见性"></a>27.类成员可见性</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121544322.png" alt="image-20240721121544322"><br><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121559852.png" alt="image-20240721121559852"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/33763848/1711526275995-c21e3839-5eb9-4938-8fc2-d6bb1ba08116.png#averageHue=%23b9b8b8&clientId=u08387cdf-9454-4&from=paste&height=298&id=u527a69cb&originHeight=358&originWidth=920&originalType=binary&ratio=1.2000000476837158&rotation=0&showTitle=false&size=117780&status=done&style=none&taskId=ud2ae5221-3d06-4004-963a-137f5b18559&title=&width=766.6666362020717" alt="image.png"><br><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121608530.png" alt="image-20240721121608530">  </p>
+<h2 id="28-类型兼容性"><a href="#28-类型兼容性" class="headerlink" title="28.类型兼容性"></a>28.类型兼容性</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121619356.png" alt="image-20240721121619356"></p>
+<h2 id="29-对象兼容性"><a href="#29-对象兼容性" class="headerlink" title="29.对象兼容性"></a>29.对象兼容性</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121633606.png" alt="image-20240721121633606"></p>
+<h2 id="30-接口兼容性"><a href="#30-接口兼容性" class="headerlink" title="30.接口兼容性"></a>30.接口兼容性</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121642523.png" alt="image-20240721121642523"></p>
+<h2 id="31-函数兼容性"><a href="#31-函数兼容性" class="headerlink" title="31.函数兼容性"></a>31.函数兼容性</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121711255.png" alt="image-20240721121711255"></p>
+<h2 id="32-类型兼容性"><a href="#32-类型兼容性" class="headerlink" title="32.类型兼容性"></a>32.类型兼容性</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121753257.png" alt="image-20240721121753257"></p>
+<h2 id="33-交叉类型"><a href="#33-交叉类型" class="headerlink" title="33.交叉类型"></a>33.交叉类型</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121806081.png" alt="image-20240721121806081"></p>
+<h2 id="34-交叉类型-和接口继承-extends-的区别"><a href="#34-交叉类型-和接口继承-extends-的区别" class="headerlink" title="34.交叉类型(&amp;)和接口继承(extends)的区别"></a>34.交叉类型(&amp;)和接口继承(extends)的区别</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121817034.png" alt="image-20240721121817034"></p>
+<h2 id="35-泛型"><a href="#35-泛型" class="headerlink" title="35.泛型"></a>35.泛型</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121849720.png" alt="image-20240721121849720"><br><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121902412.png" alt="image-20240721121902412"></p>
+<h2 id="36-简化调用泛型函数"><a href="#36-简化调用泛型函数" class="headerlink" title="36.简化调用泛型函数"></a>36.简化调用泛型函数</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121923218.png" alt="image-20240721121923218"></p>
+<h2 id="37-泛型循环"><a href="#37-泛型循环" class="headerlink" title="37.泛型循环"></a>37.泛型循环</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121937488.png" alt="image-20240721121937488"></p>
+<h2 id="38-添加约束"><a href="#38-添加约束" class="headerlink" title="38.添加约束"></a>38.添加约束</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121947098.png" alt="image-20240721121947098"></p>
+<h2 id="39-泛型的类型变量"><a href="#39-泛型的类型变量" class="headerlink" title="39.泛型的类型变量"></a>39.泛型的类型变量</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721121958758.png" alt="image-20240721121958758"></p>
+<h2 id="40-泛型接口"><a href="#40-泛型接口" class="headerlink" title="40.泛型接口"></a>40.泛型接口</h2><h2 id="41-JS中的数组就是TS中的一个泛型接口"><a href="#41-JS中的数组就是TS中的一个泛型接口" class="headerlink" title="41.JS中的数组就是TS中的一个泛型接口"></a><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122008368.png" alt="image-20240721122008368">41.JS中的数组就是TS中的一个泛型接口</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122019636.png" alt="image-20240721122019636"></p>
+<h2 id="42-class配合泛型来使用"><a href="#42-class配合泛型来使用" class="headerlink" title="42.class配合泛型来使用"></a>42.class配合泛型来使用</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122028955.png" alt="image-20240721122028955"></p>
+<h2 id="43-泛型工具类型"><a href="#43-泛型工具类型" class="headerlink" title="43.泛型工具类型"></a>43.泛型工具类型</h2><h3 id="43-1-partial"><a href="#43-1-partial" class="headerlink" title="43.1 partial"></a>43.1 partial</h3><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122043712.png" alt="image-20240721122043712"></p>
+<h3 id="43-2-readonly"><a href="#43-2-readonly" class="headerlink" title="43.2 readonly"></a>43.2 readonly</h3><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122101158.png" alt="image-20240721122101158"></p>
+<h3 id="43-3-pick"><a href="#43-3-pick" class="headerlink" title="43.3 pick"></a>43.3 pick</h3><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122115258.png" alt="image-20240721122115258"></p>
+<h3 id="43-4-record"><a href="#43-4-record" class="headerlink" title="43.4 record"></a>43.4 record</h3><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122125778.png" alt="image-20240721122125778"></p>
+<h2 id="44-索引签名类型"><a href="#44-索引签名类型" class="headerlink" title="44.索引签名类型"></a>44.索引签名类型</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122135895.png" alt="image-20240721122135895"><br><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122142423.png" alt="image-20240721122142423"></p>
+<h2 id="45-映射类型"><a href="#45-映射类型" class="headerlink" title="45.映射类型"></a>45.映射类型</h2><h3 id="45-1-基于旧类型进行创建"><a href="#45-1-基于旧类型进行创建" class="headerlink" title="45.1 基于旧类型进行创建"></a>45.1 基于旧类型进行创建</h3><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122156811.png" alt="image-20240721122156811"></p>
+<h3 id="45-2-基于对象创建"><a href="#45-2-基于对象创建" class="headerlink" title="45.2 基于对象创建"></a>45.2 基于对象创建</h3><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122216988.png" alt="image-20240721122216988"><br><img src="https://cdn.nlark.com/yuque/0/2024/png/33763848/1712045169042-d3af9b7c-16fe-473c-b138-4b320ffa2b74.png#averageHue=%23dbdada&clientId=u244b1fb9-36bf-4&from=paste&height=351&id=u92b548f8&originHeight=421&originWidth=901&originalType=binary&ratio=1.2000000476837158&rotation=0&showTitle=false&size=206437&status=done&style=none&taskId=ue187a12a-1e47-433f-b8a5-3f051279a88&title=&width=750.8333034978984" alt="image.png"></p>
+<h3 id="45-3-引查询类型"><a href="#45-3-引查询类型" class="headerlink" title="45.3 引查询类型"></a>45.3 引查询类型</h3><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122236902.png" alt="image-20240721122236902"></p>
+<h3 id="45-4-同时查询多个索引的类型"><a href="#45-4-同时查询多个索引的类型" class="headerlink" title="45.4 同时查询多个索引的类型"></a>45.4 同时查询多个索引的类型</h3><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122253777.png" alt="image-20240721122253777"></p>
+<h2 id="46-d-ts-类型声明文件"><a href="#46-d-ts-类型声明文件" class="headerlink" title="46.d.ts 类型声明文件"></a>46.d.ts 类型声明文件</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122304827.png" alt="image-20240721122304827"></p>
+<h2 id="47-TS中的两种文件类型"><a href="#47-TS中的两种文件类型" class="headerlink" title="47.TS中的两种文件类型"></a>47.TS中的两种文件类型</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122315380.png" alt="image-20240721122315380"></p>
+<h2 id="48-类型声明文件的使用说明"><a href="#48-类型声明文件的使用说明" class="headerlink" title="48.类型声明文件的使用说明"></a>48.类型声明文件的使用说明</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122324510.png" alt="image-20240721122324510"></p>
+<h2 id="49-使用已有的类型声明文件"><a href="#49-使用已有的类型声明文件" class="headerlink" title="49.使用已有的类型声明文件"></a>49.使用已有的类型声明文件</h2><h4 id="49-1-内置api"><a href="#49-1-内置api" class="headerlink" title="49.1 内置api"></a>49.1 内置api</h4><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122343148.png" alt="image-20240721122343148"></p>
+<h4 id="49-2-第三方库的类型声明"><a href="#49-2-第三方库的类型声明" class="headerlink" title="49.2 第三方库的类型声明"></a>49.2 第三方库的类型声明</h4><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122354991.png" alt="image-20240721122354991"></p>
+<h4 id="49-3-definitelyTyped"><a href="#49-3-definitelyTyped" class="headerlink" title="49.3 definitelyTyped"></a>49.3 definitelyTyped</h4><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/my1712108679139-c05ceccc-e2b1-4ac0-8860-eea3fa5c094e.png" alt="image.png"></p>
+<h4 id="49-4-创建自己的声明文件"><a href="#49-4-创建自己的声明文件" class="headerlink" title="49.4 创建自己的声明文件"></a>49.4 创建自己的声明文件</h4><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122444503.png" alt="image-20240721122444503"></p>
+<h4 id="49-5-项目内共享类型"><a href="#49-5-项目内共享类型" class="headerlink" title="49.5 项目内共享类型"></a>49.5 项目内共享类型</h4><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122504904.png" alt="image-20240721122504904"></p>
+<h4 id="49-6-为已有js文件提供类型声明"><a href="#49-6-为已有js文件提供类型声明" class="headerlink" title="49.6 为已有js文件提供类型声明"></a>49.6 为已有js文件提供类型声明</h4><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122514015.png" alt="image-20240721122514015"></p>
+<h2 id="50-【webpack】搭建一个基本的webpack4-x项目"><a href="#50-【webpack】搭建一个基本的webpack4-x项目" class="headerlink" title="50.【webpack】搭建一个基本的webpack4.x项目"></a>50.【webpack】搭建一个基本的webpack4.x项目</h2><h2 id="51-React支持TS"><a href="#51-React支持TS" class="headerlink" title="51.React支持TS"></a>51.React支持TS</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721122539813.png" alt="image-20240721122539813"></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © chen
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2024/07/20/JS01_%E5%87%BD%E6%95%B0%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91%E5%A4%9A%E6%83%85%E5%86%B5%E5%88%86%E6%9E%90/" class="pre-post btn btn-default" title='JS_函数中this的指向多情况分析'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            JS_函数中this的指向多情况分析</span>
+    </a>
+    
+    
+</div>
+
+<div id="comments">
+    
+    
+<div class="utteranc">
+  
+  <script
+    src='https://utteranc.es/client.js'
+    repo='shenliyang/snippet-comment'
+    issue-term='pathname'
+    issue-number=''
+    theme='github-light'
+    label=''
+    crossorigin='anonymous'
+    async
+  ></script>
+</div>
+
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            Table of Contents
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TypeSript%E3%80%90%E5%AE%98%E7%BD%91%E3%80%91"><span class="toc-text">TypeSript【官网】</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%B7%BB%E5%8A%A0%E7%B1%BB%E5%9E%8B%E6%94%AF%E6%8C%81%EF%BC%9F"><span class="toc-text">1.为什么要添加类型支持？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BC%98%E5%8A%BF%E6%9C%89%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">2.优势有什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%85%A8%E5%B1%80%E5%AE%89%E8%A3%85"><span class="toc-text">3.全局安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%AE%80%E5%8C%96%E8%BF%90%E8%A1%8Cts%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-text">4.简化运行ts的步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-typescript%E5%B8%B8%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="toc-text">5.typescript常用类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3"><span class="toc-text">5.1 类型注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E5%B8%B8%E7%94%A8%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B"><span class="toc-text">5.2 常用基础类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E5%8E%9F%E5%A7%8B%E7%B1%BB%E5%9E%8B"><span class="toc-text">5.3 原始类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">6.数组类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D-type%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">7.类型别名 type关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="toc-text">8.函数类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E5%8F%AF%E9%80%89%E5%8F%82%E6%95%B0"><span class="toc-text">9.可选参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B"><span class="toc-text">10.对象类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E5%AF%B9%E8%B1%A1%E4%B8%AD%E7%9A%84%E5%8F%AF%E9%80%89%E5%B1%9E%E6%80%A7"><span class="toc-text">11.对象中的可选属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E6%8E%A5%E5%8F%A3%E3%80%90%E5%A4%8D%E7%94%A8%E3%80%91"><span class="toc-text">12.接口【复用】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D"><span class="toc-text">13.接口和类型别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E6%8E%A5%E5%8F%A3%E7%BB%A7%E6%89%BF%E5%A4%8D%E7%94%A8"><span class="toc-text">14.接口继承复用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-%E5%85%83%E7%BB%84"><span class="toc-text">15.元组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-%E7%B1%BB%E5%9E%8B%E6%8E%A8%E8%AE%BA"><span class="toc-text">16.类型推论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17-%E7%B1%BB%E5%9E%8B%E6%96%AD%E8%A8%80"><span class="toc-text">17.类型断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-%E5%AD%97%E9%9D%A2%E9%87%8F%E7%B1%BB%E5%9E%8B"><span class="toc-text">18.字面量类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#19-%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B"><span class="toc-text">19.枚举类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#20-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9E%9A%E4%B8%BE"><span class="toc-text">20.字符串枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#21-%E6%9E%9A%E4%B8%BE%E7%89%B9%E7%82%B9"><span class="toc-text">21.枚举特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-any%E7%B1%BB%E5%9E%8B"><span class="toc-text">22.any类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#23-ypeof"><span class="toc-text">23.ypeof</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#24-TS%E9%AB%98%E7%BA%A7%E7%B1%BB%E5%9E%8B"><span class="toc-text">24.TS高级类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#24-1-class"><span class="toc-text">24.1 class</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#25-%E7%B1%BB%E7%9A%84%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95"><span class="toc-text">25.类的实例方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#26-%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-text">26.类的继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#27-%E7%B1%BB%E6%88%90%E5%91%98%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-text">27.类成员可见性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#28-%E7%B1%BB%E5%9E%8B%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-text">28.类型兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#29-%E5%AF%B9%E8%B1%A1%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-text">29.对象兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#30-%E6%8E%A5%E5%8F%A3%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-text">30.接口兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#31-%E5%87%BD%E6%95%B0%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-text">31.函数兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#32-%E7%B1%BB%E5%9E%8B%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-text">32.类型兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#33-%E4%BA%A4%E5%8F%89%E7%B1%BB%E5%9E%8B"><span class="toc-text">33.交叉类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#34-%E4%BA%A4%E5%8F%89%E7%B1%BB%E5%9E%8B-%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%BB%A7%E6%89%BF-extends-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">34.交叉类型(&amp;)和接口继承(extends)的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#35-%E6%B3%9B%E5%9E%8B"><span class="toc-text">35.泛型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#36-%E7%AE%80%E5%8C%96%E8%B0%83%E7%94%A8%E6%B3%9B%E5%9E%8B%E5%87%BD%E6%95%B0"><span class="toc-text">36.简化调用泛型函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#37-%E6%B3%9B%E5%9E%8B%E5%BE%AA%E7%8E%AF"><span class="toc-text">37.泛型循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#38-%E6%B7%BB%E5%8A%A0%E7%BA%A6%E6%9D%9F"><span class="toc-text">38.添加约束</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#39-%E6%B3%9B%E5%9E%8B%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F"><span class="toc-text">39.泛型的类型变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#40-%E6%B3%9B%E5%9E%8B%E6%8E%A5%E5%8F%A3"><span class="toc-text">40.泛型接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#41-JS%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%B0%B1%E6%98%AFTS%E4%B8%AD%E7%9A%84%E4%B8%80%E4%B8%AA%E6%B3%9B%E5%9E%8B%E6%8E%A5%E5%8F%A3"><span class="toc-text">41.JS中的数组就是TS中的一个泛型接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#42-class%E9%85%8D%E5%90%88%E6%B3%9B%E5%9E%8B%E6%9D%A5%E4%BD%BF%E7%94%A8"><span class="toc-text">42.class配合泛型来使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#43-%E6%B3%9B%E5%9E%8B%E5%B7%A5%E5%85%B7%E7%B1%BB%E5%9E%8B"><span class="toc-text">43.泛型工具类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#43-1-partial"><span class="toc-text">43.1 partial</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#43-2-readonly"><span class="toc-text">43.2 readonly</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#43-3-pick"><span class="toc-text">43.3 pick</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#43-4-record"><span class="toc-text">43.4 record</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#44-%E7%B4%A2%E5%BC%95%E7%AD%BE%E5%90%8D%E7%B1%BB%E5%9E%8B"><span class="toc-text">44.索引签名类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#45-%E6%98%A0%E5%B0%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">45.映射类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#45-1-%E5%9F%BA%E4%BA%8E%E6%97%A7%E7%B1%BB%E5%9E%8B%E8%BF%9B%E8%A1%8C%E5%88%9B%E5%BB%BA"><span class="toc-text">45.1 基于旧类型进行创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#45-2-%E5%9F%BA%E4%BA%8E%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA"><span class="toc-text">45.2 基于对象创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#45-3-%E5%BC%95%E6%9F%A5%E8%AF%A2%E7%B1%BB%E5%9E%8B"><span class="toc-text">45.3 引查询类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#45-4-%E5%90%8C%E6%97%B6%E6%9F%A5%E8%AF%A2%E5%A4%9A%E4%B8%AA%E7%B4%A2%E5%BC%95%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">45.4 同时查询多个索引的类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#46-d-ts-%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6"><span class="toc-text">46.d.ts 类型声明文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#47-TS%E4%B8%AD%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="toc-text">47.TS中的两种文件类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#48-%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E"><span class="toc-text">48.类型声明文件的使用说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#49-%E4%BD%BF%E7%94%A8%E5%B7%B2%E6%9C%89%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6"><span class="toc-text">49.使用已有的类型声明文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#49-1-%E5%86%85%E7%BD%AEapi"><span class="toc-text">49.1 内置api</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#49-2-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E"><span class="toc-text">49.2 第三方库的类型声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#49-3-definitelyTyped"><span class="toc-text">49.3 definitelyTyped</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#49-4-%E5%88%9B%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6"><span class="toc-text">49.4 创建自己的声明文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#49-5-%E9%A1%B9%E7%9B%AE%E5%86%85%E5%85%B1%E4%BA%AB%E7%B1%BB%E5%9E%8B"><span class="toc-text">49.5 项目内共享类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#49-6-%E4%B8%BA%E5%B7%B2%E6%9C%89js%E6%96%87%E4%BB%B6%E6%8F%90%E4%BE%9B%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E"><span class="toc-text">49.6 为已有js文件提供类型声明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#50-%E3%80%90webpack%E3%80%91%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%9F%BA%E6%9C%AC%E7%9A%84webpack4-x%E9%A1%B9%E7%9B%AE"><span class="toc-text">50.【webpack】搭建一个基本的webpack4.x项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#51-React%E6%94%AF%E6%8C%81TS"><span class="toc-text">51.React支持TS</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    Total:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    Visitors:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/assets/tagcanvas.min.js?rev=2.9.js"></script>
+
+<script>
+var tagOption = {
+    textColour: '#444', // 字体颜色
+    outlineMethod: 'block', // 选中模式
+    outlineColour: '#FFDAB9', // 选中模式的颜色
+    interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+    textHeight: 13,
+    outlineRadius: 3,
+    freezeActive: true || '', // 选中的标签是否继续滚动
+    frontSelect: true || '', // 不选标签云后部的标签
+    initial: [0.1, -0.1],
+    depth: 0.5,
+    decel: 0.95,
+    maxSpeed: 0.03,
+    reverse: true || '', // 是否反向触发
+    fadeIn: 500, // 进入动画时间
+    wheelZoom: false || '' // 是否启用鼠标滚轮
+}
+TagCanvas.Start('tag-cloud-3d', '', tagOption);
+</script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
