@@ -1,0 +1,373 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="大白话说前端，多读源码多实践，勤于思考善领悟">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://example.com">
+    <!--SEO-->
+
+<meta name="keywords" content="" />
+
+
+<meta name="description" content="1可以脱离浏览器来执行js代码,没有DOM和BOM对象,针对后端可以编写接口，提供网页资源，前端可以集成各种工具（承上启下）
+node1.Buffer
+2.Buffer相关操作
+123456le..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    关于Node的基本认识【BASIC】 |
+    
+    大白话说前端，多读源码多实践，勤于思考善领悟
+</title>
+
+<link rel="alternate" href="/atom.xml" title="大白话说前端，多读源码多实践，勤于思考善领悟" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon1.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    https://pic.netbian.com/uploads/allimg/240716/175037-17211234379392.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='er dong yi'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <h2>
+                前端从未如此简单有趣
+            </h2>
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://example.com">
+                        大白话说前端，多读源码多实践，勤于思考善领悟</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                Home</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa fa-calendar"></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="关于Node的基本认识【BASIC】">
+            
+            关于Node的基本认识【BASIC】
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/node/">node</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2024/05/20</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以脱离浏览器来执行js代码,没有DOM和BOM对象,针对后端可以编写接口，提供网页资源，前端可以集成各种工具（承上启下）</span><br></pre></td></tr></table></figure>
+<h1 id="node"><a href="#node" class="headerlink" title="node"></a>node</h1><h2 id="1-Buffer"><a href="#1-Buffer" class="headerlink" title="1.Buffer"></a>1.Buffer</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722185800133.png" alt="image-20240722185800133"></p>
+<h2 id="2-Buffer相关操作"><a href="#2-Buffer相关操作" class="headerlink" title="2.Buffer相关操作"></a>2.Buffer相关操作</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722185811863.png" alt="image-20240722185811863"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> buf = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="number">10</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buf);</span><br><span class="line"><span class="keyword">let</span> buf_2 = <span class="title class_">Buffer</span>.<span class="title function_">allocUnsafe</span>(<span class="number">100</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buf_2);</span><br><span class="line"><span class="keyword">let</span> buf_3 = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buf_3);</span><br></pre></td></tr></table></figure>
+<h2 id="3-fs模块-读写模块【回顾一下liunx操作系统】【增删改查操作】"><a href="#3-fs模块-读写模块【回顾一下liunx操作系统】【增删改查操作】" class="headerlink" title="3.fs模块-读写模块【回顾一下liunx操作系统】【增删改查操作】"></a>3.fs模块-读写模块【回顾一下liunx操作系统】【增删改查操作】</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722185823072.png" alt="image-20240722185823072"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">与本机文件系统进行交互的，方法和属性</span><br></pre></td></tr></table></figure>
+<p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722185832249.png" alt="image-20240722185832249"><br><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722185840006.png" alt="image-20240722185840006"></p>
+<h2 id="4-fs异步和同步"><a href="#4-fs异步和同步" class="headerlink" title="4.fs异步和同步"></a>4.fs异步和同步</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722185852184.png" alt="image-20240722185852184"></p>
+<h2 id="5-fs文件追加操作"><a href="#5-fs文件追加操作" class="headerlink" title="5.fs文件追加操作"></a>5.fs文件追加操作</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722185903793.png" alt="image-20240722185903793"></p>
+<h2 id="6-文件写入的场景-【做持久化】"><a href="#6-文件写入的场景-【做持久化】" class="headerlink" title="6.文件写入的场景-【做持久化】"></a>6.文件写入的场景-【做持久化】</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722185915521.png" alt="image-20240722185915521"></p>
+<h2 id="7-文件读取"><a href="#7-文件读取" class="headerlink" title="7.文件读取"></a>7.文件读取</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722185929153.png" alt="image-20240722185929153"></p>
+<h2 id="8-写一个创建文件的脚本"><a href="#8-写一个创建文件的脚本" class="headerlink" title="8.写一个创建文件的脚本"></a>8.写一个创建文件的脚本</h2><h2 id="9-fs流式写入"><a href="#9-fs流式写入" class="headerlink" title="9.fs流式写入"></a>9.fs流式写入</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722185950220.png" alt="image-20240722185950220"></p>
+<h2 id="10-exports对象"><a href="#10-exports对象" class="headerlink" title="10.exports对象"></a>10.exports对象</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">由于module.exports 单词写起来比较复杂，为了简化向外共享成员的代码，Node 提供了exports 对象。默认情况下，exports和module.exports 指向同一个对象。最终共享的结果，还是以module.exports指向的对象为准。</span><br><span class="line">时刻谨记，require()模块时，得到的永远是module.exports指向的对象:</span><br></pre></td></tr></table></figure>
+<h2 id="11-计算机组成"><a href="#11-计算机组成" class="headerlink" title="11.计算机组成"></a>11.计算机组成</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722190005679.png" alt="image-20240722190005679"></p>
+<h2 id="12-模块化"><a href="#12-模块化" class="headerlink" title="12.模块化"></a>12.模块化</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-require的使用</span><br><span class="line">-模块化的好处-&gt;无法共享成员</span><br><span class="line">-module对象，每个.js都自定义模块中都有一个module对象</span><br><span class="line">-exports 自定义模块中，可以使用exports将模块中的成员共享出去，给外界使用  在自定义模块中，默认情况下，module.export = &#123;&#125;</span><br><span class="line">使用require()方法导入模块时，导入的结果，永远以module.exports指向的对象为准。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722190016626.png" alt="image-20240722190016626"></p>
+<h2 id="13-模块化初体验"><a href="#13-模块化初体验" class="headerlink" title="13.模块化初体验"></a>13.模块化初体验</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722190034603.png" alt="image-20240722190034603"></p>
+<h2 id="14-模块暴露数据"><a href="#14-模块暴露数据" class="headerlink" title="14.模块暴露数据"></a>14.模块暴露数据</h2><p><img src="https://cdn.nlark.com/yuque/0/2024/png/33763848/1710658668469-7a3df286-090c-4ba6-b021-0fc82b1e439d.png#averageHue=%232b2b23&clientId=uab5eda68-2013-4&from=paste&height=687&id=ud3ba9a56&originHeight=824&originWidth=1464&originalType=binary&ratio=1.2000000476837158&rotation=0&showTitle=false&size=547234&status=done&style=none&taskId=uc95e74da-8ae8-4a2b-abc0-e4ac861d1e2&title=&width=1219.9999515215575" alt="image.png"><br><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722190048595.png" alt="image-20240722190048595"></p>
+<h2 id="15-导入（引入）模块"><a href="#15-导入（引入）模块" class="headerlink" title="15.导入（引入）模块"></a>15.导入（引入）模块</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722191730313.png" alt="image-20240722191730313"><br>导入 js 和 json文件时 可以省略后缀</p>
+<h2 id="16-导入模块的基本流程"><a href="#16-导入模块的基本流程" class="headerlink" title="16.导入模块的基本流程"></a>16.导入模块的基本流程</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722191741753.png" alt="image-20240722191741753"></p>
+<h2 id="17-commonJS规范"><a href="#17-commonJS规范" class="headerlink" title="17.commonJS规范"></a>17.commonJS规范</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722191752584.png" alt="image-20240722191752584"></p>
+<h2 id="18-包管理工具【哆啦A梦】"><a href="#18-包管理工具【哆啦A梦】" class="headerlink" title="18.包管理工具【哆啦A梦】"></a>18.包管理工具【哆啦A梦】</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722192635496.png" alt="image-20240722192635496"></p>
+<h2 id="19-npm"><a href="#19-npm" class="headerlink" title="19.npm"></a>19.npm</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722192646803.png" alt="image-20240722192646803"></p>
+<h2 id="20-npm基本使用"><a href="#20-npm基本使用" class="headerlink" title="20.npm基本使用"></a>20.npm基本使用</h2><h3 id="20-1初始化"><a href="#20-1初始化" class="headerlink" title="20.1初始化"></a>20.1初始化</h3><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722192726796.png" alt="image-20240722192726796"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;test01&quot;</span>,</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;author&quot;</span>: <span class="string">&quot;c&quot;</span>,</span><br><span class="line">  <span class="string">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722192737910.png" alt="image-20240722192737910"></p>
+<h3 id="20-2如何搜索-下载npm包-npmjs-com"><a href="#20-2如何搜索-下载npm包-npmjs-com" class="headerlink" title="20.2如何搜索&#x2F;下载npm包 npmjs.com"></a>20.2如何搜索&#x2F;下载npm包 <a target="_blank" rel="noopener" href="https://npmjs.com/">npmjs.com</a></h3><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722192802505.png" alt="image-20240722192802505"></p>
+<h3 id="20-3require导入包的基本流程"><a href="#20-3require导入包的基本流程" class="headerlink" title="20.3require导入包的基本流程"></a>20.3require导入包的基本流程</h3><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722192812083.png" alt="image-20240722192812083"></p>
+<h3 id="20-4开发依赖和生产依赖"><a href="#20-4开发依赖和生产依赖" class="headerlink" title="20.4开发依赖和生产依赖"></a>20.4开发依赖和生产依赖</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7135795969370619918">https://juejin.cn/post/7135795969370619918</a><br><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/my1710667704366-53c47f96-3753-4f3d-98b6-e16d26ce2380.png" alt="image.png"></p>
+<h3 id="20-5npm全局安装"><a href="#20-5npm全局安装" class="headerlink" title="20.5npm全局安装"></a>20.5npm全局安装</h3><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722192854948.png" alt="image-20240722192854948"></p>
+<h3 id="20-6修改windows执行策略"><a href="#20-6修改windows执行策略" class="headerlink" title="20.6修改windows执行策略"></a>20.6修改windows执行策略</h3><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722192922707.png" alt="image-20240722192922707"><br><img src="https://cdn.nlark.com/yuque/0/2024/png/33763848/1710668210313-d38c6ec6-6e93-487e-9a16-e83306697ad6.png#averageHue=%23c5d0c5&clientId=u151ed77f-0541-4&from=paste&height=366&id=uea013fdf&originHeight=439&originWidth=1236&originalType=binary&ratio=1.2000000476837158&rotation=0&showTitle=false&size=289254&status=done&style=none&taskId=u8f711dd8-ec37-4a43-9816-88f3dbf131f&title=&width=1029.9999590714788" alt="image.png"></p>
+<h2 id="21-环境变量path"><a href="#21-环境变量path" class="headerlink" title="21.环境变量path"></a>21.环境变量path</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722192936895.png" alt="image-20240722192936895"></p>
+<h3 id="20-1-npm安装包的所有依赖"><a href="#20-1-npm安装包的所有依赖" class="headerlink" title="20.1 npm安装包的所有依赖"></a>20.1 npm安装包的所有依赖</h3><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722192946860.png" alt="image-20240722192946860"></p>
+<h2 id="22-安装指定版本的包"><a href="#22-安装指定版本的包" class="headerlink" title="22.安装指定版本的包"></a>22.安装指定版本的包</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722192954600.png" alt="image-20240722192954600"></p>
+<h2 id="23-配置命令别名"><a href="#23-配置命令别名" class="headerlink" title="23.配置命令别名"></a>23.配置命令别名</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722193005553.png" alt="image-20240722193005553"></p>
+<h2 id="24-cnpm"><a href="#24-cnpm" class="headerlink" title="24.cnpm"></a>24.cnpm</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722193017454.png" alt="image-20240722193017454"></p>
+<h2 id="25-配置淘宝镜像"><a href="#25-配置淘宝镜像" class="headerlink" title="25.配置淘宝镜像"></a>25.配置淘宝镜像</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722193026238.png" alt="image-20240722193026238"> 	</p>
+<h2 id="26-yarn"><a href="#26-yarn" class="headerlink" title="26.yarn"></a>26.yarn</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722193035283.png" alt="image-20240722193035283"></p>
+<h2 id="27-npm和yarn的使用"><a href="#27-npm和yarn的使用" class="headerlink" title="27.npm和yarn的使用"></a>27.npm和yarn的使用</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722193128589.png" alt="image-20240722193128589"></p>
+<h2 id="28-管理发布包"><a href="#28-管理发布包" class="headerlink" title="28.管理发布包"></a>28.管理发布包</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722193139825.png" alt="image-20240722193139825"></p>
+<h2 id="29-更新和删除"><a href="#29-更新和删除" class="headerlink" title="29.更新和删除"></a>29.更新和删除</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722193152416.png" alt="image-20240722193152416"></p>
+<h2 id="30-扩展"><a href="#30-扩展" class="headerlink" title="30.扩展"></a>30.扩展</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722193307073.png" alt="image-20240722193307073"></p>
+<h2 id="31-nvm"><a href="#31-nvm" class="headerlink" title="31.nvm"></a>31.nvm</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722193315354.png" alt="image-20240722193315354"></p>
+<h2 id="32-常用命令"><a href="#32-常用命令" class="headerlink" title="32.常用命令"></a>32.常用命令</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722193323474.png" alt="image-20240722193323474"></p>
+<h2 id="33-expressJS"><a href="#33-expressJS" class="headerlink" title="33.expressJS"></a>33.expressJS</h2><p>Express是一个流行的Node.js Web应用程序框架，用于构建服务器端应用程序。它提供了一组简洁而灵活的工具和中间件，使开发者可以轻松地构建RESTful API和Web应用。Express具有路由、请求和响应处理、中间件等功能，可以帮助开发者管理HTTP请求和构建服务器端逻辑。通过Express，可以搭建一个响应请求的服务器，处理前端发起的HTTP请求并返回相应的数据或页面。</p>
+<h2 id="34-简单应用"><a href="#34-简单应用" class="headerlink" title="34.简单应用"></a>34.简单应用</h2><h2 id="35-路由"><a href="#35-路由" class="headerlink" title="35.路由"></a>35.路由</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722193340649.png" alt="image-20240722193340649"></p>
+<ul>
+<li>方法</li>
+<li>路径</li>
+<li>回调<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span>  express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 路由</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/home&#x27;</span>,<span class="function">(<span class="params">req,res</span>) =&gt;</span>&#123;</span><br><span class="line">    res.<span class="title function_">end</span>(<span class="string">&#x27;Welcome to the Home page&#x27;</span>)</span><br><span class="line">&#125; )</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>,<span class="function">(<span class="params">req,res</span>) =&gt;</span>&#123;</span><br><span class="line">    res.<span class="title function_">end</span>(<span class="string">&#x27;Welcome to the Home page with   instructions   for creating&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&#x27;/login&#x27;</span>,<span class="function">(<span class="params">req,res</span>) =&gt;</span>&#123;</span><br><span class="line">    res.<span class="title function_">end</span>(<span class="string">&#x27;Welcome to the Login page&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;*&#x27;</span>,<span class="function">(<span class="params">req,res</span>) =&gt;</span>&#123;</span><br><span class="line">    res.<span class="title function_">end</span>(<span class="string">&#x27;404  Not Found &#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>,<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;listening on http://localhost&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="36-获取请求参数"><a href="#36-获取请求参数" class="headerlink" title="36.获取请求参数"></a>36.获取请求参数</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722193356905.png" alt="image-20240722193356905"></p>
+<h2 id="37-获取路由参数"><a href="#37-获取路由参数" class="headerlink" title="37.获取路由参数"></a>37.获取路由参数</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722193743893.png" alt="image-20240722193743893"></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © chen
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2024/07/20/JS01_%E5%87%BD%E6%95%B0%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91%E5%A4%9A%E6%83%85%E5%86%B5%E5%88%86%E6%9E%90/" class="pre-post btn btn-default" title='JS_函数中this的指向多情况分析'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            JS_函数中this的指向多情况分析</span>
+    </a>
+    
+    
+    <a href="/2024/04/20/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8EJS%E7%9A%84%E5%8E%9F%E7%90%86/" class="next-post btn btn-default" title='浏览器【WebKit内核】渲染原理【QUESTION】'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            浏览器【WebKit内核】渲染原理【QUESTION】</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    <div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1966422"></script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            Table of Contents
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#node"><span class="toc-text">node</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Buffer"><span class="toc-text">1.Buffer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Buffer%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="toc-text">2.Buffer相关操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-fs%E6%A8%A1%E5%9D%97-%E8%AF%BB%E5%86%99%E6%A8%A1%E5%9D%97%E3%80%90%E5%9B%9E%E9%A1%BE%E4%B8%80%E4%B8%8Bliunx%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E3%80%90%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%93%8D%E4%BD%9C%E3%80%91"><span class="toc-text">3.fs模块-读写模块【回顾一下liunx操作系统】【增删改查操作】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-fs%E5%BC%82%E6%AD%A5%E5%92%8C%E5%90%8C%E6%AD%A5"><span class="toc-text">4.fs异步和同步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-fs%E6%96%87%E4%BB%B6%E8%BF%BD%E5%8A%A0%E6%93%8D%E4%BD%9C"><span class="toc-text">5.fs文件追加操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E7%9A%84%E5%9C%BA%E6%99%AF-%E3%80%90%E5%81%9A%E6%8C%81%E4%B9%85%E5%8C%96%E3%80%91"><span class="toc-text">6.文件写入的场景-【做持久化】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-text">7.文件读取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%86%99%E4%B8%80%E4%B8%AA%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E7%9A%84%E8%84%9A%E6%9C%AC"><span class="toc-text">8.写一个创建文件的脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-fs%E6%B5%81%E5%BC%8F%E5%86%99%E5%85%A5"><span class="toc-text">9.fs流式写入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-exports%E5%AF%B9%E8%B1%A1"><span class="toc-text">10.exports对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90"><span class="toc-text">11.计算机组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="toc-text">12.模块化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E6%A8%A1%E5%9D%97%E5%8C%96%E5%88%9D%E4%BD%93%E9%AA%8C"><span class="toc-text">13.模块化初体验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E6%A8%A1%E5%9D%97%E6%9A%B4%E9%9C%B2%E6%95%B0%E6%8D%AE"><span class="toc-text">14.模块暴露数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-%E5%AF%BC%E5%85%A5%EF%BC%88%E5%BC%95%E5%85%A5%EF%BC%89%E6%A8%A1%E5%9D%97"><span class="toc-text">15.导入（引入）模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B"><span class="toc-text">16.导入模块的基本流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17-commonJS%E8%A7%84%E8%8C%83"><span class="toc-text">17.commonJS规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E3%80%90%E5%93%86%E5%95%A6A%E6%A2%A6%E3%80%91"><span class="toc-text">18.包管理工具【哆啦A梦】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#19-npm"><span class="toc-text">19.npm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#20-npm%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-text">20.npm基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#20-1%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">20.1初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-2%E5%A6%82%E4%BD%95%E6%90%9C%E7%B4%A2-%E4%B8%8B%E8%BD%BDnpm%E5%8C%85-npmjs-com"><span class="toc-text">20.2如何搜索&#x2F;下载npm包 npmjs.com</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-3require%E5%AF%BC%E5%85%A5%E5%8C%85%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B"><span class="toc-text">20.3require导入包的基本流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-4%E5%BC%80%E5%8F%91%E4%BE%9D%E8%B5%96%E5%92%8C%E7%94%9F%E4%BA%A7%E4%BE%9D%E8%B5%96"><span class="toc-text">20.4开发依赖和生产依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-5npm%E5%85%A8%E5%B1%80%E5%AE%89%E8%A3%85"><span class="toc-text">20.5npm全局安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-6%E4%BF%AE%E6%94%B9windows%E6%89%A7%E8%A1%8C%E7%AD%96%E7%95%A5"><span class="toc-text">20.6修改windows执行策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#21-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8Fpath"><span class="toc-text">21.环境变量path</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#20-1-npm%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E6%89%80%E6%9C%89%E4%BE%9D%E8%B5%96"><span class="toc-text">20.1 npm安装包的所有依赖</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E7%9A%84%E5%8C%85"><span class="toc-text">22.安装指定版本的包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#23-%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4%E5%88%AB%E5%90%8D"><span class="toc-text">23.配置命令别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#24-cnpm"><span class="toc-text">24.cnpm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#25-%E9%85%8D%E7%BD%AE%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F"><span class="toc-text">25.配置淘宝镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#26-yarn"><span class="toc-text">26.yarn</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#27-npm%E5%92%8Cyarn%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">27.npm和yarn的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#28-%E7%AE%A1%E7%90%86%E5%8F%91%E5%B8%83%E5%8C%85"><span class="toc-text">28.管理发布包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#29-%E6%9B%B4%E6%96%B0%E5%92%8C%E5%88%A0%E9%99%A4"><span class="toc-text">29.更新和删除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#30-%E6%89%A9%E5%B1%95"><span class="toc-text">30.扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#31-nvm"><span class="toc-text">31.nvm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#32-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">32.常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#33-expressJS"><span class="toc-text">33.expressJS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#34-%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8"><span class="toc-text">34.简单应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#35-%E8%B7%AF%E7%94%B1"><span class="toc-text">35.路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#36-%E8%8E%B7%E5%8F%96%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0"><span class="toc-text">36.获取请求参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#37-%E8%8E%B7%E5%8F%96%E8%B7%AF%E7%94%B1%E5%8F%82%E6%95%B0"><span class="toc-text">37.获取路由参数</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    Total:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    Visitors:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/assets/tagcanvas.min.js?rev=2.9.js"></script>
+
+<script>
+var tagOption = {
+    textColour: '#444', // 字体颜色
+    outlineMethod: 'block', // 选中模式
+    outlineColour: '#FFDAB9', // 选中模式的颜色
+    interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+    textHeight: 13,
+    outlineRadius: 3,
+    freezeActive: true || '', // 选中的标签是否继续滚动
+    frontSelect: true || '', // 不选标签云后部的标签
+    initial: [0.1, -0.1],
+    depth: 0.5,
+    decel: 0.95,
+    maxSpeed: 0.03,
+    reverse: true || '', // 是否反向触发
+    fadeIn: 500, // 进入动画时间
+    wheelZoom: false || '' // 是否启用鼠标滚轮
+}
+TagCanvas.Start('tag-cloud-3d', '', tagOption);
+</script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
