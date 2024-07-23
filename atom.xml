@@ -202,6 +202,29 @@
   </entry>
   
   <entry>
+    <title>By计数器理解自定义事件【PRACTICE】</title>
+    <link href="http://example.com/2023/02/23/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1-%E7%90%86%E8%A7%A3%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6/"/>
+    <id>http://example.com/2023/02/23/组件通信-理解自定义事件/</id>
+    <published>2023-02-23T14:00:41.000Z</published>
+    <updated>2024-07-22T16:05:46.800Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722235917924.png" alt="image-20240722235917924"></p><p>App.vue</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">import SubCounter from &quot;./SubCounter.vue&quot;;</span><br><span class="line">import AddCounter from &quot;./AddCounter.vue&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;App&quot;,</span><br><span class="line">  components:&#123;</span><br><span class="line">   SubCounter,</span><br><span class="line">   AddCounter</span><br><span class="line">  &#125;,</span><br><span class="line">  data()&#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      counter: 0,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    btnClick(count)&#123;</span><br><span class="line">      this.counter += count</span><br><span class="line">    &#125;,</span><br><span class="line">    subBtnClick(count)&#123;</span><br><span class="line">      this.counter -= count</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;app&quot;&gt;</span><br><span class="line">    &lt;h2&gt;小小计数器：&#123;&#123;counter&#125;&#125;&lt;/h2&gt;</span><br><span class="line">    &lt;sub-counter @sub=&quot;subBtnClick&quot;&gt;&lt;/sub-counter&gt;</span><br><span class="line">    &lt;add-counter @add=&quot;btnClick&quot;&gt;&lt;/add-counter&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure><p>AddCounter.vue</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;AddCounter&quot;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    addClick(count)&#123;</span><br><span class="line">      this.$emit(&#x27;add&#x27;,count)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;add&quot;&gt;</span><br><span class="line">    &lt;button @click=&quot;addClick(1)&quot;&gt;+1&lt;/button&gt;</span><br><span class="line">    &lt;button @click=&quot;addClick(5)&quot;&gt;+5&lt;/button&gt;</span><br><span class="line">    &lt;button @click=&quot;addClick(1000)&quot;&gt;+1000&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure><p>SubCounter.vue</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;AddCounter&quot;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    addClick(count)&#123;</span><br><span class="line">      this.$emit(&#x27;add&#x27;,count)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;add&quot;&gt;</span><br><span class="line">    &lt;button @click=&quot;addClick(1)&quot;&gt;+1&lt;/button&gt;</span><br><span class="line">    &lt;button @click=&quot;addClick(5)&quot;&gt;+5&lt;/button&gt;</span><br><span class="line">    &lt;button @click=&quot;addClick(1000)&quot;&gt;+1000&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure><p>呈现：</p><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240723000252726.png" alt="image-20240723000252726"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240722235917924.png&quot; alt=&quot;image-202407222359179
+      
+    
+    </summary>
+    
+      <category term="vue" scheme="http://example.com/categories/vue/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>简单梳理一下vue3【BASIC】</title>
     <link href="http://example.com/2023/02/22/Vue3%E3%80%90%E8%BF%9B%E9%98%B6%E3%80%91/"/>
     <id>http://example.com/2023/02/22/Vue3【进阶】/</id>
@@ -220,6 +243,29 @@
     </summary>
     
       <category term="vue" scheme="http://example.com/categories/vue/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>开启前端之旅</title>
+    <link href="http://example.com/2020/09/20/%E5%89%8D%E7%AB%AF%E4%B9%8B%E6%97%85/"/>
+    <id>http://example.com/2020/09/20/前端之旅/</id>
+    <published>2020-09-20T14:00:41.000Z</published>
+    <updated>2024-07-23T05:12:17.523Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="每日必看-https-interview-poetries-top"><a href="#每日必看-https-interview-poetries-top" class="headerlink" title="每日必看: https://interview.poetries.top/"></a><a href="https://interview.poetries.top/">每日必看</a>: <a href="https://interview.poetries.top/">https://interview.poetries.top/</a></h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;每日必看-https-interview-poetries-top&quot;&gt;&lt;a href=&quot;#每日必看-https-interview-poetries-top&quot; class=&quot;headerlink&quot; title=&quot;每日必看: https://interview.po
+      
+    
+    </summary>
+    
+      <category term="tool" scheme="http://example.com/categories/tool/"/>
     
     
   </entry>
