@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-09-17T14:31:52.247Z</updated>
+  <updated>2024-09-17T14:35:20.204Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://example.com/2024/09/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     <id>http://example.com/2024/09/17/设计模式/</id>
     <published>2024-09-17T07:00:00.000Z</published>
-    <updated>2024-09-17T14:31:52.247Z</updated>
+    <updated>2024-09-17T14:35:20.204Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>不同的业务场景可以采用不同的设计模式</p></blockquote><h2 id="1-构造器模式"><a href="#1-构造器模式" class="headerlink" title="1.构造器模式"></a>1.构造器模式</h2><p>可以批量生产对象</p><p>构造器模式是一种创建对象的设计模式，它提供了一种创建对象的方式，而不需要暴露内部结构。</p><p>构造器模式的主要优点是：</p><p>\1. 可以隐藏对象的创建细节，使代码更加简洁。</p><p>\2. 可以方便地修改对象的创建方式，而不需要修改客户端代码。</p><p>\3. 可以方便地创建多个对象，而不需要重复编写代码。</p><p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20240917145827668.png" alt="image-20240917145827668"></p><p>然而：say()方法每次都要生成；非常冗余；统称搭配原型来使用！</p><h2 id="2-原型模式"><a href="#2-原型模式" class="headerlink" title="2.原型模式"></a>2.原型模式</h2><p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20240917150216231.png" alt="image-20240917150216231"></p><p><strong>es6 语法：利用 calss 类的方式构造（构造器）</strong></p><p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20240917150303280.png" alt="image-20240917150303280"></p><p>其中 say()方法自动装载到了原型之上。</p><h3 id="实际应用场景"><a href="#实际应用场景" class="headerlink" title="实际应用场景"></a>实际应用场景</h3><ul><li>tab 栏案例</li></ul><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240917165514322.png" alt="image-20240917165514322"></p><h2 id="3-工厂模式"><a href="#3-工厂模式" class="headerlink" title="3.工厂模式"></a>3.工厂模式</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240917170005727.png" alt="image-20240917170005727"></p><p>应用场景：权限管理（不同的角色有不同的权限）</p><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240917171440892.png" alt="image-20240917171440892"></p><p>es6 语法</p><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240917172501512.png" alt="image-20240917172501512"></p><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240917172516638.png" alt="image-20240917172516638"></p><h2 id="4-抽象工厂模式"><a href="#4-抽象工厂模式" class="headerlink" title="4.抽象工厂模式"></a>4.抽象工厂模式</h2>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>不同的业务场景可以采用不同的设计模式</p></blockquote><h2 id="1-构造器模式"><a href="#1-构造器模式" class="headerlink" title="1.构造器模式"></a>1.构造器模式</h2><p>可以批量生产对象</p><p>构造器模式是一种创建对象的设计模式，它提供了一种创建对象的方式，而不需要暴露内部结构。</p><p>构造器模式的主要优点是：</p><p>\1. 可以隐藏对象的创建细节，使代码更加简洁。</p><p>\2. 可以方便地修改对象的创建方式，而不需要修改客户端代码。</p><p>\3. 可以方便地创建多个对象，而不需要重复编写代码。</p><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240917223448532.png" alt="image-20240917223448532"></p><p>然而：say()方法每次都要生成；非常冗余；统称搭配原型来使用！</p><h2 id="2-原型模式"><a href="#2-原型模式" class="headerlink" title="2.原型模式"></a>2.原型模式</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240917223504684.png" alt="image-20240917223504684"></p><p><strong>es6 语法：利用 calss 类的方式构造（构造器）</strong></p><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240917223516141.png" alt="image-20240917223516141"></p><p>其中 say()方法自动装载到了原型之上。</p><h3 id="实际应用场景"><a href="#实际应用场景" class="headerlink" title="实际应用场景"></a>实际应用场景</h3><ul><li>tab 栏案例</li></ul><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240917165514322.png" alt="image-20240917165514322"></p><h2 id="3-工厂模式"><a href="#3-工厂模式" class="headerlink" title="3.工厂模式"></a>3.工厂模式</h2><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240917170005727.png" alt="image-20240917170005727"></p><p>应用场景：权限管理（不同的角色有不同的权限）</p><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240917171440892.png" alt="image-20240917171440892"></p><p>es6 语法</p><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240917172501512.png" alt="image-20240917172501512"></p><p><img src="https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240917172516638.png" alt="image-20240917172516638"></p><h2 id="4-抽象工厂模式"><a href="#4-抽象工厂模式" class="headerlink" title="4.抽象工厂模式"></a>4.抽象工厂模式</h2>]]></content>
     
     <summary type="html">
     
@@ -38,6 +38,22 @@
     </summary>
     
       <category term="设计模式" scheme="http://example.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>01-Vue3源码阅读</title>
+    <link href="http://example.com/2024/09/05/%E3%80%90REVIEW%E3%80%9101-%20vue%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
+    <id>http://example.com/2024/09/05/【REVIEW】01- vue源码阅读/</id>
+    <published>2024-09-05T01:43:39.341Z</published>
+    <updated>2024-09-17T14:33:38.782Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="vue3" scheme="http://example.com/categories/vue3/"/>
     
     
   </entry>
@@ -398,22 +414,6 @@
     <id>http://example.com/2023/02/05/Vue06-组件化开发-全局组件-局部组件/</id>
     <published>2023-02-05T14:00:41.000Z</published>
     <updated>2024-07-24T09:09:51.362Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="vue" scheme="http://example.com/categories/vue/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Vue05-双向数据绑定v-model</title>
-    <link href="http://example.com/2023/02/02/Vue05-%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9Av-model/"/>
-    <id>http://example.com/2023/02/02/Vue05-双向数据绑定v-model/</id>
-    <published>2023-02-02T14:00:41.000Z</published>
-    <updated>2024-07-24T09:10:09.075Z</updated>
     
     <summary type="html">
     
